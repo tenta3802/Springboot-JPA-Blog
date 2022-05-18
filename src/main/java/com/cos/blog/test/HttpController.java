@@ -1,6 +1,6 @@
 package com.cos.blog.test;
 
-import org.springframework.web.bind.annotation.DeleteMapping; 
+import org.springframework.web.bind.annotation.DeleteMapping;  
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,9 +16,10 @@ public class HttpController {
 	
 	private static final String TAG="HttpController:";
 	
+	//localhost:8000/blog/http/lombok
 	@GetMapping("/http/lombok")
 	public String lombokTest() {
-		Member m = Member.builder().username("ssar").password("1234").email("asds@aneb.com").build();
+		Member m = Member.builder().username("kim").password("1111").email("lom@nave.com").build();
 		System.out.println(TAG+"getter:"+m.getId());
 		m.setId(5000);
 		System.out.println(TAG+"setter:"+m.getId());
