@@ -1,6 +1,6 @@
 package com.cos.blog.model;
 
-import java.sql.Timestamp;
+import java.sql.Timestamp; 
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +11,15 @@ import javax.persistence.Id;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 //ORM -> Java(다른언어 포함)object->테이블로 매핑해주는 기술
 @Entity // User 클래스가 자동으로 MySQL에 테이블이 생성이 된다.
 public class User {
