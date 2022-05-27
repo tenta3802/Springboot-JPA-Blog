@@ -1,6 +1,6 @@
 package com.cos.blog.test;
 
-import java.util.List;
+import java.util.List; 
 import java.util.function.Supplier;
 
 import javax.transaction.Transactional;
