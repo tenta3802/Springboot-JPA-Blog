@@ -1,6 +1,6 @@
 package com.cos.blog.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired; 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -52,10 +52,9 @@ public class UserController {
 	}
 
 	@GetMapping("/auth/kakao/callback")
-	public @ResponseBody String kakaoCallback(String code) { // Data를 리턴해주는 컨트롤러 함수
+	public String kakaoCallback(String code) { // Data를 리턴해주는 컨트롤러 함수
 
 		// POST방식으로 key=value 데이터를 요청(카카오쪽으로)
-
 		RestTemplate rt = new RestTemplate();
 
 		// HttpHeader 오브젝트 생성
@@ -92,7 +91,7 @@ public class UserController {
 			e.printStackTrace();
 		}
 
-		System.out.println("카카오 엑세스 토큰 :"+oauthToken.getAccess_token());
+		//System.out.println("카카오 엑세스 토큰 :"+oauthToken.getAccess_token());
 		
 		RestTemplate rt2 = new RestTemplate();
 
@@ -110,7 +109,8 @@ public class UserController {
 				"https://kapi.kakao.com/v2/user/me",
 				HttpMethod.POST,
 				kakaoTokenfileRequest2,
-				String.class);
+				String.class
+				);
 		
 		System.out.println(response2.getBody());
 		
@@ -126,9 +126,8 @@ public class UserController {
 		}
 		
 		//User 오브젝트: username, password, email
-		System.out.println("카카오 아이디(번호) : "+kakaoProfile.getId());
+		//System.out.println("카카오 아이디(번호) : "+kakaoProfile.getId());
 		System.out.println("카카오 이메일 : "+kakaoProfile.getKakao_account().getEmail());
-
 		System.out.println("블로그서버 유저네임 : "+kakaoProfile.getKakao_account().getEmail()+"_"+kakaoProfile.getId());
 		System.out.println("블로그서버 이메일 : "+kakaoProfile.getKakao_account().getEmail());
 		// UUID란 -> 중복되지 않는 어떤 특정 값을 만들어내는 알고리즘
@@ -139,6 +138,7 @@ public class UserController {
 				.username(kakaoProfile.getKakao_account().getEmail()+"_"+kakaoProfile.getId())
 				.password(cosKey)
 				.email(kakaoProfile.getKakao_account().getEmail())
+				.oauth("kakao")
 				.build();
 		
 		// 가입자 혹은 비가입자 체크 해서 처리		
@@ -155,7 +155,7 @@ public class UserController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		
 		return "redirect:/";
-	}
+		}
 
 	@GetMapping("/user/updateForm")
 	public String updateForm() {
