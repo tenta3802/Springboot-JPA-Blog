@@ -67,4 +67,9 @@ public class BoardService {
 		int result = replyRepository.mSave(replySaveRequestDto.getUserId(), replySaveRequestDto.getBoardId(), replySaveRequestDto.getContent());
 		System.out.println("BoardService: "+ result);
 	}
+	
+	@Transactional
+	public void ¥Ò±€ªË¡¶(int replyId) {
+		replyRepository.deleteById(replyId);
+	}
 }
