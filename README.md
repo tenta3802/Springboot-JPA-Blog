@@ -1,5 +1,5 @@
 # Springboot-JPA-Blog
-1. java
+1. Java
 2. STS Tool
 3. Spring boot
 
